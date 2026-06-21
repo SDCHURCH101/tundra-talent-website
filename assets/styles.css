@@ -76,9 +76,9 @@ header.site{position:fixed;top:0;left:0;right:0;z-index:60;
   border-bottom:1px solid transparent}
 header.site.solid{background:rgba(255,255,255,.97);backdrop-filter:saturate(140%) blur(10px);
   box-shadow:var(--shadow-sm);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;gap:22px;height:80px;max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.nav{display:flex;align-items:center;gap:22px;height:92px;max-width:var(--maxw);margin:0 auto;padding:0 26px}
 .brand{display:flex;align-items:center;gap:12px;margin-right:auto}
-.brand img{height:46px;width:auto}
+.brand img{height:64px;width:auto;transition:height .3s var(--ease)}
 .brand .logo-dark{display:none}
 header.site.solid .brand .logo-light{display:none}
 header.site.solid .brand .logo-dark{display:block}
@@ -402,7 +402,8 @@ footer.site .blurb{font-size:14.5px;line-height:1.7;max-width:32ch;color:#9fb6c9
 }
 @media(max-width:760px){
   body{font-size:16px}
-  .nav{height:70px}
+  .nav{height:78px}
+  .brand img{height:54px}
   .hero{min-height:auto;padding:120px 0 64px}
   .statbar .grid{grid-template-columns:1fr 1fr}
   .stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.12);padding:30px 18px}
