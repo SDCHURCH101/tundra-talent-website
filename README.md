@@ -27,3 +27,11 @@ Logo in `assets/img/tundra-logo.png` (color, for light) and `tundra-logo-white.p
 ## Deploy
 Intended for GitHub Pages with custom domain `www.tundra-talent.com`
 (rename `CNAME.ready` to `CNAME` at cutover). All canonical/OG/sitemap URLs use that domain.
+
+## Image credits
+Most photos are Tundra Talent / affiliate Alaska jobsite images. Three section
+photos are free stock from [Pexels](https://www.pexels.com) (Pexels License:
+free for commercial use, no attribution required):
+- `oilgas-energy.jpg` — oil well at sunset (Pexels #16862261)
+- `mining-ops.jpg` — open-pit mine (Pexels #2892618)
+- `team-tech.jpg` — industrial worker with tablet (Pexels #32845692)
