@@ -457,3 +457,18 @@ img{height:auto}
   .scrollcue{opacity:.85;animation:none}
   .scrollcue .mouse::after{animation:none}
 }
+
+/* ---------- callout panel (e.g. public/federal projects) ---------- */
+.callout{display:flex;align-items:center;gap:26px 40px;flex-wrap:wrap;justify-content:space-between;
+  background:linear-gradient(130deg,var(--navy) 0%,var(--ink) 92%);color:#fff;border-radius:18px;
+  padding:34px 40px;margin-top:34px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.callout::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;
+  background:repeating-linear-gradient(180deg,var(--amber) 0 18px,#0b2138 18px 36px)}
+.callout .c-main{display:flex;align-items:center;gap:22px;flex:1;min-width:300px}
+.callout .c-ico{width:60px;height:60px;border-radius:14px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;color:var(--glacier-2);flex:none}
+.callout .c-ico svg{width:30px;height:30px}
+.callout .eyebrow{color:var(--glacier-2);margin:0 0 8px}
+.callout h3{color:#fff;font-size:1.5rem;margin:0 0 6px;line-height:1.12}
+.callout p{color:#cfe0ee;margin:0;font-size:1rem;max-width:64ch}
+@media(max-width:760px){.callout{padding:28px 24px}.callout .c-main{gap:16px}.callout .btn{width:100%;justify-content:center}}
