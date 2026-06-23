@@ -121,3 +121,72 @@
   /* year */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
+
+/* ===== language switcher (Google Translate, client-side) ===== */
+(function () {
+  "use strict";
+  // [Google code, native name] — major world languages
+  var LANGS = [
+    ["en","English"],["es","Español"],["zh-CN","中文 (简体)"],["zh-TW","中文 (繁體)"],
+    ["hi","हिन्दी"],["ar","العربية"],["pt","Português"],["ru","Русский"],["ja","日本語"],
+    ["de","Deutsch"],["fr","Français"],["ko","한국어"],["it","Italiano"],["tr","Türkçe"],
+    ["pl","Polski"],["uk","Українська"],["nl","Nederlands"],["vi","Tiếng Việt"],["th","ไทย"],
+    ["id","Bahasa Indonesia"],["ms","Bahasa Melayu"],["tl","Filipino"],["bn","বাংলা"],
+    ["ur","اردو"],["fa","فارسی"],["pa","ਪੰਜਾਬੀ"],["ta","தமிழ்"],["te","తెలుగు"],["mr","मराठी"],
+    ["gu","ગુજરાતી"],["el","Ελληνικά"],["iw","עברית"],["sv","Svenska"],["no","Norsk"],
+    ["da","Dansk"],["fi","Suomi"],["cs","Čeština"],["ro","Română"],["hu","Magyar"],
+    ["sw","Kiswahili"],["am","አማርኛ"],["so","Soomaali"],["ne","नेपाली"],["my","မြန်မာ"],
+    ["km","ខ្មែរ"],["ht","Kreyòl Ayisyen"]
+  ];
+  var selects = document.querySelectorAll("select.lang-select");
+  if (!selects.length) return;
+
+  // populate
+  var opts = LANGS.map(function (l) { return '<option value="' + l[0] + '">' + l[1] + "</option>"; }).join("");
+  selects.forEach(function (s) { s.innerHTML = opts; });
+
+  function currentLang() {
+    var m = document.cookie.match(/googtrans=\/[^/]*\/([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : "en";
+  }
+  function setCookie(name, val, del) {
+    var base = name + "=" + val + ";path=/";
+    var exp = del ? ";expires=Thu, 01 Jan 1970 00:00:00 GMT" : "";
+    var host = location.hostname;
+    var root = host.replace(/^www\./, "");
+    document.cookie = base + exp;
+    document.cookie = base + ";domain=" + host + exp;
+    if (root.indexOf(".") > -1) document.cookie = base + ";domain=." + root + exp;
+  }
+  function setLang(code) {
+    setCookie("googtrans", "", true);            // clear
+    if (code && code !== "en") setCookie("googtrans", "/en/" + code);
+    location.reload();
+  }
+
+  var cur = currentLang();
+  selects.forEach(function (s) {
+    try { s.value = cur; } catch (e) {}
+    s.addEventListener("change", function () { setLang(this.value); });
+  });
+
+  // load Google Translate (drives the actual translation from the cookie)
+  if (!document.getElementById("google_translate_element")) {
+    var d = document.createElement("div");
+    d.id = "google_translate_element";
+    d.setAttribute("aria-hidden", "true");
+    document.body.appendChild(d);
+  }
+  window.googleTranslateElementInit = function () {
+    new google.translate.TranslateElement(
+      { pageLanguage: "en", includedLanguages: LANGS.map(function (l) { return l[0]; }).join(","), autoDisplay: false },
+      "google_translate_element"
+    );
+  };
+  if (!document.getElementById("gtrans-js")) {
+    var sc = document.createElement("script");
+    sc.id = "gtrans-js";
+    sc.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    document.body.appendChild(sc);
+  }
+})();

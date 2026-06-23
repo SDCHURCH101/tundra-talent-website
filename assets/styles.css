@@ -472,3 +472,37 @@ img{height:auto}
 .callout h3{color:#fff;font-size:1.5rem;margin:0 0 6px;line-height:1.12}
 .callout p{color:#cfe0ee;margin:0;font-size:1rem;max-width:64ch}
 @media(max-width:760px){.callout{padding:28px 24px}.callout .c-main{gap:16px}.callout .btn{width:100%;justify-content:center}}
+
+/* ---------- language switcher ---------- */
+.lang{position:relative;display:inline-flex;align-items:center}
+.lang .globe{position:absolute;left:11px;width:16px;height:16px;pointer-events:none;color:#fff;opacity:.9}
+.lang .chev{position:absolute;right:9px;width:13px;height:13px;pointer-events:none;color:#fff;opacity:.75}
+.lang select{appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;
+  font-family:"Archivo",sans-serif;font-weight:600;font-size:14px;line-height:1;
+  border-radius:9px;padding:10px 28px 10px 33px;cursor:pointer;max-width:160px;
+  transition:background .2s,border-color .2s}
+.lang select:hover{background:rgba(255,255,255,.12)}
+.lang select:focus-visible{outline:3px solid var(--glacier);outline-offset:2px}
+.lang select option{color:#11202e;background:#fff}
+header.site.solid .lang select{border-color:var(--line);color:var(--ink)}
+header.site.solid .lang .globe,header.site.solid .lang .chev{color:var(--ink)}
+header.site.solid .lang select:hover{background:var(--ice)}
+
+.lang-mobile{margin-top:20px}
+.lang-mobile label{display:block;color:var(--glacier-2);font-family:"Archivo",sans-serif;font-weight:700;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}
+.lang-mobile select{width:100%;appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  background:rgba(255,255,255,.06) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%2346BCEA' stroke-width='2.5' viewBox='0 0 24 24'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 14px center;
+  border:1px solid rgba(255,255,255,.18);color:#fff;font-family:"Archivo",sans-serif;font-weight:600;
+  font-size:16px;border-radius:10px;padding:13px 38px 13px 15px;cursor:pointer}
+.lang-mobile select option{color:#11202e;background:#fff}
+
+/* Google Translate: hide its injected banner/branding, keep layout stable */
+.goog-te-banner-frame,iframe.skiptranslate,.goog-te-gadget-icon,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}
+body{top:0!important;position:static!important}
+.goog-te-gadget{height:0;overflow:hidden;font-size:0}
+#google_translate_element{position:absolute!important;left:-9999px!important;top:-9999px!important;height:0!important;width:0!important;overflow:hidden}
+.goog-tooltip,.goog-text-highlight{background:none!important;box-shadow:none!important}
+
+@media(max-width:760px){ .lang{display:none} }
