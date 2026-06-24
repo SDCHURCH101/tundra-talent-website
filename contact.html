@@ -95,23 +95,29 @@
 
       <!-- EMPLOYER -->
       <div data-pane="employer">
-        <form data-demo="true" novalidate>
+        <form action="https://formsubmit.co/ajax/steve.clark@tundra-talent.com" method="POST" data-contact novalidate>
+          <input type="hidden" name="_subject" value="New talent request from tundra-talent.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="Form" value="Employer — I need talent">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div class="grid2">
-            <div class="field"><label>Full name *</label><input type="text" required placeholder="Jane Doe" aria-label="Full name"><div class="err">Please enter your name.</div></div>
-            <div class="field"><label>Company *</label><input type="text" required placeholder="Operator / contractor" aria-label="Company"><div class="err">Please enter your company.</div></div>
+            <div class="field"><label>Full name *</label><input type="text" name="Name" required placeholder="Jane Doe" aria-label="Full name"><div class="err">Please enter your name.</div></div>
+            <div class="field"><label>Company *</label><input type="text" name="Company" required placeholder="Operator / contractor" aria-label="Company"><div class="err">Please enter your company.</div></div>
           </div>
           <div class="grid2">
-            <div class="field"><label>Work email *</label><input type="email" required placeholder="you@company.com" aria-label="Work email"><div class="err">Please enter a valid email.</div></div>
-            <div class="field"><label>Phone</label><input type="tel" placeholder="(907) 000-0000" aria-label="Phone"></div>
+            <div class="field"><label>Work email *</label><input type="email" name="email" required placeholder="you@company.com" aria-label="Work email"><div class="err">Please enter a valid email.</div></div>
+            <div class="field"><label>Phone</label><input type="tel" name="Phone" placeholder="(907) 000-0000" aria-label="Phone"></div>
           </div>
           <div class="grid2">
             <div class="field"><label>Industry</label>
-              <select aria-label="Industry"><option value="">Select one</option><option>Oil &amp; Gas (Upstream)</option><option>Oil &amp; Gas (Midstream)</option><option>Oil &amp; Gas (Downstream)</option><option>Mining</option><option>Construction</option><option>Other</option></select>
+              <select name="Industry" aria-label="Industry"><option value="">Select one</option><option>Oil &amp; Gas (Upstream)</option><option>Oil &amp; Gas (Midstream)</option><option>Oil &amp; Gas (Downstream)</option><option>Mining</option><option>Construction</option><option>Other</option></select>
             </div>
-            <div class="field"><label>Project location</label><input type="text" placeholder="e.g. Prudhoe Bay, AK" aria-label="Project location"></div>
+            <div class="field"><label>Project location</label><input type="text" name="Project location" placeholder="e.g. Prudhoe Bay, AK" aria-label="Project location"></div>
           </div>
-          <div class="field"><label>What roles do you need? *</label><textarea required placeholder="Roles, headcount, certifications, rotation, and start date" aria-label="What roles do you need?"></textarea><div class="err">Tell us what you need.</div></div>
+          <div class="field"><label>What roles do you need? *</label><textarea name="Roles needed" required placeholder="Roles, headcount, certifications, rotation, and start date" aria-label="What roles do you need?"></textarea><div class="err">Tell us what you need.</div></div>
           <button class="btn btn-primary btn-lg" type="submit" style="width:100%;justify-content:center">Send request</button>
+          <p class="form-error" role="alert" style="display:none;color:#c0392b;font-size:14px;margin-top:12px">Sorry, that did not send. Please call (907) 600-4304 or email <a href="mailto:info@tundra-talent.com">info@tundra-talent.com</a>.</p>
           <p class="form-note">Prefer to talk? Call dispatch at (907) 600-4304 or email info@tundra-talent.com.</p>
         </form>
         <div class="form-success">
@@ -123,17 +129,23 @@
 
       <!-- CANDIDATE -->
       <div data-pane="candidate" style="display:none">
-        <form data-demo="true" novalidate>
+        <form action="https://formsubmit.co/ajax/steve.clark@tundra-talent.com" method="POST" data-contact novalidate>
+          <input type="hidden" name="_subject" value="New job application from tundra-talent.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="Form" value="Candidate — looking for work">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div class="grid2">
-            <div class="field"><label>Full name *</label><input type="text" required placeholder="Your name" aria-label="Full name"><div class="err">Please enter your name.</div></div>
-            <div class="field"><label>Primary trade *</label><input type="text" required placeholder="e.g. Welder, Operator, Electrician" aria-label="Primary trade"><div class="err">Please enter your trade.</div></div>
+            <div class="field"><label>Full name *</label><input type="text" name="Name" required placeholder="Your name" aria-label="Full name"><div class="err">Please enter your name.</div></div>
+            <div class="field"><label>Primary trade *</label><input type="text" name="Primary trade" required placeholder="e.g. Welder, Operator, Electrician" aria-label="Primary trade"><div class="err">Please enter your trade.</div></div>
           </div>
           <div class="grid2">
-            <div class="field"><label>Email *</label><input type="email" required placeholder="you@email.com" aria-label="Email"><div class="err">Please enter a valid email.</div></div>
-            <div class="field"><label>Phone</label><input type="tel" placeholder="(907) 000-0000" aria-label="Phone"></div>
+            <div class="field"><label>Email *</label><input type="email" name="email" required placeholder="you@email.com" aria-label="Email"><div class="err">Please enter a valid email.</div></div>
+            <div class="field"><label>Phone</label><input type="tel" name="Phone" placeholder="(907) 000-0000" aria-label="Phone"></div>
           </div>
-          <div class="field"><label>Certifications &amp; experience</label><textarea placeholder="Tickets, certifications, years of experience, and availability" aria-label="Certifications and experience"></textarea></div>
+          <div class="field"><label>Certifications &amp; experience</label><textarea name="Certifications and experience" placeholder="Tickets, certifications, years of experience, and availability" aria-label="Certifications and experience"></textarea></div>
           <button class="btn btn-primary btn-lg" type="submit" style="width:100%;justify-content:center">Submit your info</button>
+          <p class="form-error" role="alert" style="display:none;color:#c0392b;font-size:14px;margin-top:12px">Sorry, that did not send. Please call (907) 600-4304 or email <a href="mailto:info@tundra-talent.com">info@tundra-talent.com</a>.</p>
           <p class="form-note">You can also browse and apply to open roles anytime at <a href="https://jobs.tundra-talent.com" target="_blank" rel="noopener">jobs.tundra-talent.com</a>.</p>
         </form>
         <div class="form-success">
@@ -209,6 +221,6 @@
     </div>
   </div>
 </footer>
-<script src="assets/app.js?v=4"></script>
+<script src="assets/app.js?v=5"></script>
 </body>
 </html>

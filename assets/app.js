@@ -93,8 +93,8 @@
     });
   });
 
-  /* demo form validation (client-side only — no backend) */
-  document.querySelectorAll("form[data-demo]").forEach(function (form) {
+  /* contact forms: validate, then submit via AJAX (FormSubmit), keep success panel */
+  document.querySelectorAll("form[data-contact]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var ok = true;
@@ -105,10 +105,32 @@
         if (bad) ok = false;
       });
       if (!ok) return;
+
       var card = form.closest(".formwrap") || form.parentElement;
       var success = card.querySelector(".form-success");
-      form.style.display = "none";
-      if (success) success.classList.add("show");
+      var errMsg = form.querySelector(".form-error");
+      var btn = form.querySelector("button[type=submit]");
+      var label = btn ? btn.textContent : "";
+      if (errMsg) errMsg.style.display = "none";
+      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+      fetch(form.action, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("bad status");
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function () {
+          form.style.display = "none";
+          if (success) success.classList.add("show");
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          if (errMsg) errMsg.style.display = "block";
+        });
     });
     form.querySelectorAll("input,select,textarea").forEach(function (input) {
       input.addEventListener("input", function () {
