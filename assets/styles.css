@@ -508,3 +508,13 @@ body{top:0!important;position:static!important}
 .goog-tooltip,.goog-text-highlight{background:none!important;box-shadow:none!important}
 
 @media(max-width:760px){ .lang{display:none} }
+
+/* ---------- testimonial / client review ---------- */
+.stars{display:flex;justify-content:center;gap:5px;color:var(--amber);margin-bottom:26px}
+.stars svg{width:24px;height:24px}
+.quote{font-family:"Archivo",sans-serif;font-weight:600;font-size:clamp(1.3rem,2.4vw,1.75rem);
+  line-height:1.5;letter-spacing:-.01em;color:var(--ink);margin:0 auto;max-width:42ch}
+.quote-by{display:inline-flex;align-items:center;gap:15px;margin-top:30px;text-align:left}
+.quote-by .avatar{width:56px;height:56px;font-size:1.15rem;margin:0;box-shadow:0 8px 20px -10px rgba(14,92,144,.6)}
+.quote-by .who b{display:block;font-family:"Archivo",sans-serif;color:var(--ink);font-size:1.05rem;line-height:1.2}
+.quote-by .who span{color:var(--slate-2);font-size:.95rem}
