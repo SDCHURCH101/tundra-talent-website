@@ -165,6 +165,9 @@
   }
 
   var cur = currentLang();
+  document.querySelectorAll(".lang .lang-code").forEach(function (el) {
+    el.textContent = (cur.split("-")[0] || "en").toUpperCase();
+  });
   selects.forEach(function (s) {
     try { s.value = cur; } catch (e) {}
     s.addEventListener("change", function () { setLang(this.value); });

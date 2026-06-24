@@ -82,9 +82,10 @@ header.site.solid{background:rgba(255,255,255,.97);backdrop-filter:saturate(140%
 .brand .logo-dark{display:none}
 header.site.solid .brand .logo-light{display:none}
 header.site.solid .brand .logo-dark{display:block}
-.nav-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0}
+.nav-links{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0;flex:0 1 auto}
+.nav-links li{flex:none}
 .nav-links a{font-family:"Archivo",sans-serif;font-weight:600;font-size:15px;color:#fff;
-  letter-spacing:.005em;position:relative;padding:6px 0;transition:color .2s}
+  letter-spacing:.005em;position:relative;padding:6px 0;transition:color .2s;white-space:nowrap}
 header.site.solid .nav-links a{color:var(--ink)}
 .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;
   background:var(--glacier);transition:right .3s var(--ease)}
@@ -474,20 +475,21 @@ img{height:auto}
 @media(max-width:760px){.callout{padding:28px 24px}.callout .c-main{gap:16px}.callout .btn{width:100%;justify-content:center}}
 
 /* ---------- language switcher ---------- */
-.lang{position:relative;display:inline-flex;align-items:center}
-.lang .globe{position:absolute;left:11px;width:16px;height:16px;pointer-events:none;color:#fff;opacity:.9}
-.lang .chev{position:absolute;right:9px;width:13px;height:13px;pointer-events:none;color:#fff;opacity:.75}
-.lang select{appearance:none;-webkit-appearance:none;-moz-appearance:none;
-  background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;
-  font-family:"Archivo",sans-serif;font-weight:600;font-size:14px;line-height:1;
-  border-radius:9px;padding:10px 28px 10px 33px;cursor:pointer;max-width:160px;
+.lang{position:relative;display:inline-flex;align-items:center;gap:6px;flex:none;
+  border:1.5px solid rgba(255,255,255,.45);border-radius:9px;padding:9px 11px;cursor:pointer;
   transition:background .2s,border-color .2s}
-.lang select:hover{background:rgba(255,255,255,.12)}
-.lang select:focus-visible{outline:3px solid var(--glacier);outline-offset:2px}
-.lang select option{color:#11202e;background:#fff}
-header.site.solid .lang select{border-color:var(--line);color:var(--ink)}
-header.site.solid .lang .globe,header.site.solid .lang .chev{color:var(--ink)}
-header.site.solid .lang select:hover{background:var(--ice)}
+.lang:hover{background:rgba(255,255,255,.12)}
+.lang:focus-within{outline:3px solid var(--glacier);outline-offset:2px}
+.lang .globe{width:17px;height:17px;color:#fff;flex:none;pointer-events:none}
+.lang .lang-code{font-family:"Archivo",sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;
+  color:#fff;pointer-events:none}
+.lang .chev{width:12px;height:12px;color:#fff;opacity:.7;flex:none;pointer-events:none}
+.lang select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;
+  border:0;margin:0;font-size:16px;appearance:none;-webkit-appearance:none}
+.lang select option{color:#11202e;background:#fff;font-size:14px}
+header.site.solid .lang{border-color:var(--line)}
+header.site.solid .lang:hover{background:var(--ice)}
+header.site.solid .lang .globe,header.site.solid .lang .lang-code,header.site.solid .lang .chev{color:var(--ink)}
 
 .lang-mobile{margin-top:20px}
 .lang-mobile label{display:block;color:var(--glacier-2);font-family:"Archivo",sans-serif;font-weight:700;
