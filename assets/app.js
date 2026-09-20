@@ -167,23 +167,20 @@
   var opts = LANGS.map(function (l) { return '<option value="' + l[0] + '">' + l[1] + "</option>"; }).join("");
   selects.forEach(function (s) { s.innerHTML = opts; });
 
+  var REAL_ORIGIN = "https://www.tundra-talent.com";
+  function realUrl() { return REAL_ORIGIN + location.pathname + location.hash; }
+  // Current language comes from Google's proxy URL param (?_x_tr_tl=xx); default English.
   function currentLang() {
-    var m = document.cookie.match(/googtrans=\/[^/]*\/([^;]+)/);
-    return m ? decodeURIComponent(m[1]) : "en";
+    try { var tl = new URLSearchParams(location.search).get("_x_tr_tl"); if (tl) return tl; } catch (e) {}
+    return "en";
   }
-  function setCookie(name, val, del) {
-    var base = name + "=" + val + ";path=/";
-    var exp = del ? ";expires=Thu, 01 Jan 1970 00:00:00 GMT" : "";
-    var host = location.hostname;
-    var root = host.replace(/^www\./, "");
-    document.cookie = base + exp;
-    document.cookie = base + ";domain=" + host + exp;
-    if (root.indexOf(".") > -1) document.cookie = base + ";domain=." + root + exp;
-  }
+  // Full-page translation via Google's hosted translator: translates the ENTIRE
+  // page, works on every device, no widget/cookie needed. English returns to the
+  // original site.
   function setLang(code) {
-    setCookie("googtrans", "", true);            // clear
-    if (code && code !== "en") setCookie("googtrans", "/en/" + code);
-    location.reload();
+    if (!code || code === "en") { window.location.href = realUrl(); return; }
+    window.location.href = "https://translate.google.com/translate?sl=en&tl=" +
+      encodeURIComponent(code) + "&u=" + encodeURIComponent(realUrl());
   }
 
   var cur = currentLang();
@@ -195,27 +192,4 @@
     s.addEventListener("change", function () { setLang(this.value); });
   });
 
-  // Load Google Translate ONLY when a non-English language is active.
-  // English visitors never download the heavy third-party script; picking a
-  // language sets the cookie + reloads, and the reloaded (non-en) page loads it.
-  if (cur && cur !== "en") {
-    if (!document.getElementById("google_translate_element")) {
-      var d = document.createElement("div");
-      d.id = "google_translate_element";
-      d.setAttribute("aria-hidden", "true");
-      document.body.appendChild(d);
-    }
-    window.googleTranslateElementInit = function () {
-      new google.translate.TranslateElement(
-        { pageLanguage: "en", includedLanguages: LANGS.map(function (l) { return l[0]; }).join(","), autoDisplay: false },
-        "google_translate_element"
-      );
-    };
-    if (!document.getElementById("gtrans-js")) {
-      var sc = document.createElement("script");
-      sc.id = "gtrans-js";
-      sc.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      document.body.appendChild(sc);
-    }
-  }
 })();

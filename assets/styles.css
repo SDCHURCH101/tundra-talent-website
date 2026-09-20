@@ -507,7 +507,8 @@ body{top:0!important;position:static!important}
 #google_translate_element{position:absolute!important;left:-9999px!important;top:-9999px!important;height:0!important;width:0!important;overflow:hidden}
 .goog-tooltip,.goog-text-highlight{background:none!important;box-shadow:none!important}
 
-@media(max-width:760px){ .lang{display:none} }
+/* mobile: keep the language picker visible in the header (compact globe) */
+@media(max-width:760px){ .lang{padding:8px 9px} .lang .lang-code,.lang .chev{display:none} }
 
 /* ---------- testimonial / client review ---------- */
 .stars{display:flex;justify-content:center;gap:5px;color:var(--amber);margin-bottom:26px}
